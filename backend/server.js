@@ -17,6 +17,12 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
+// middleware
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
+
 // Handle GET requests to /api route
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
