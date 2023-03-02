@@ -4,6 +4,7 @@ import React from "react";
 import Checkbox from "../components/Checkbox";
 import Header from "../components/Header";
 import Instructions from "../components/Instructions";
+import Playlist from "./playlist";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <Header />
       <Instructions />
       <Checkbox />
+      <Playlist />
     </div>
   );
 }
