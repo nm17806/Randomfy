@@ -9,7 +9,11 @@ const Footer = () => {
         <p>Copyright &copy; {today.getFullYear()}</p>
       </footer>
     </div>
+    
   );
 };
 
 export default Footer;
+
+
+
