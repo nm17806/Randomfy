@@ -5,12 +5,13 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
 
+// connecting to DB
 const uri = process.env.ATLAS_URI;
+const port = process.env.PORT;
 mongoose.connect(uri);
 const connection = mongoose.connection;
 connection.once("open", () => {

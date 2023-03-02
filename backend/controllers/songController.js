@@ -8,7 +8,7 @@ const getAllSongs = async (req, res) => {
   res.status(200).json(songs);
 };
 
-// Get ALL Indie Genre songs
+// Get 5 Indie Genre songs
 const getIndieRandom = async (req, res) => {
   const songs = await Song.aggregate([
     { $match: { genre: "Indie" } },
