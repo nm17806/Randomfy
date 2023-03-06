@@ -16,6 +16,10 @@ const songSchema = new Schema(
       type: String,
       required: true,
     },
+    spotifyLink: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
