@@ -17,7 +17,7 @@ import {rockSongs,
   ninetiesSongs,
   twothousandsSongs,
   twentytenSongs,
-  twentytwentySongs} from "../../backend/controllers/checkboxController";
+  twentytwentySongs} from "../../../backend/controllers/checkboxController";
 
 const Checkbox = ({ id, label, onChange }) => {
   return (
@@ -32,10 +32,19 @@ const Checkbox = ({ id, label, onChange }) => {
 
 const App = () => {
   // This checks if the button is clicked on not and holds the data
-  const [checked, setChecked] = useState({});
+  const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
 
-  function handleSubmit(onChange){
+  const handleChange = (e) => {
+    setChecked(!checked); 
+    return (
+      e.target.id(checked)
+    )
+    //setChecked({ ...checked, [e.target.id]: e.target.checked });
+  };
+
+  function handleSubmit(e){
+    e.preventDefault();
     if(onChange >= 1){
       return (
         navigate("/favourites")
@@ -71,7 +80,7 @@ const App = () => {
               key={checkbox.id}
               id={checkbox.id}
               label={checkbox.label}
-              onChange={checkbox.onChange}
+              onChange={handleChange}
             />
           ))}
         </div>

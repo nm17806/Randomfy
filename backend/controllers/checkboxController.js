@@ -1,125 +1,50 @@
 const Song = require("../models/songModel");
 const mongoose = require("mongoose");
 
-const rockSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Rock" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const rockSongs =  await Song.find({genre: "Rock"}).exec();
 
-const hiphopSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Hip Hop" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const hiphopSongs = await Song.find( { genre: "Hip Hop" }).exec();
 
-  const popSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Pop" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const popSongs = await Song.find( { genre: "Pop" }).exec();
 
-  const punkSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Punk" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const punkSongs = await Song.find({ genre: "Punk" }).exec();
 
-  const metalSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Metal" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const metalSongs = await Song.find({ genre: "Metal" }).exec();
 
-  const classicalSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Classical" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const classicalSongs = await Song.find({ genre: "Classical" }).exec();
 
-  const electronicSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Electronic" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const electronicSongs = await Song.find({ genre: "Electronic" }).exec();
 
-  const reggaetonSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Reggaeton" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const reggaetonSongs = await Song.find({ genre: "Reggaeton" }).exec();
 
-  const indieSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "Indie" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const indieSongs = await Song.find({ genre: "Indie" }).exec();
 
-  const seventiesSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "70s" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const seventiesSongs = await Song.find({ genre: "70s" }).exec();
 
-  const eightiesSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "80s" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const eightiesSongs = await Song.find({ genre: "80s" }).exec();
 
-  const ninetiesSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "90s" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const ninetiesSongs = await Song.find({ genre: "90s" }).exec();
 
-  const twothousandsSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "2000s" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const twothousandsSongs = await Song.find({ genre: "2000s" }).exec();
 
-  const twentytenSongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "2010s" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const twentytenSongs = await Song.find({ genre: "2010s" }).exec();
 
-  const twentytwentySongs = async (req, res) => {
-    const songs = await Song.aggregate([
-      { $match: { genre: "2020s" } },
-    ]);
-    res.status(200).json(songs);
-  };
+const twentytwentySongs = await Song.find({ genre: "2020s" }).exec();
 
-  module.exports = {
-    rockSongs,
-    hiphopSongs,
-    popSongs,
-    punkSongs,
-    metalSongs, 
-    classicalSongs,
-    electronicSongs,
-    reggaetonSongs,
-    indieSongs,
-    seventiesSongs,
-    eightiesSongs,
-    ninetiesSongs,
-    twothousandsSongs,
-    twentytenSongs,
-    twentytwentySongs
-  }
+module.exports = {
+  rockSongs,
+  hiphopSongs,
+  popSongs,
+  punkSongs,
+  metalSongs, 
+  classicalSongs,
+  electronicSongs,
+  reggaetonSongs,
+  indieSongs,
+  seventiesSongs,
+  eightiesSongs,
+  ninetiesSongs,
+  twothousandsSongs,
+  twentytenSongs,
+  twentytwentySongs
+}
