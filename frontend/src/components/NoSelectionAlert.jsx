@@ -1,7 +1,7 @@
 import React from "react";
 import Alert from 'react-bootstrap/Alert';
 
-function NoPlaylistAlert(){
+function NoSelectionAlert(){
     return (
         <Alert variant= "danger" dismissable>
             <Alert.Heading><img src= "./img/warning-sign.png" alt= "warning sign" /></Alert.Heading>
@@ -10,4 +10,4 @@ function NoPlaylistAlert(){
     )
 };
 
-export default NoPlaylistAlert;
+export default NoSelectionAlert;

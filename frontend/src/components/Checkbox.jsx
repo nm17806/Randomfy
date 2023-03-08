@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react- router-dom"
 import "./Checkbox.css";
-import NoPlaylistAlert from "./NoPlaylistAlert";
+import NoSelectionAlert from "./NoSelectionAlert";
 
 import {rockSongs,
   hiphopSongs,
@@ -35,41 +35,42 @@ const App = () => {
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
 
+  const checkboxes = [
+    { id: 1, label: "Rock", onSelected: rockSongs },
+    { id: 2, label: "Hip Hop", onSelected: hiphopSongs },
+    { id: 3, label: "Pop", onSelected: popSongs },
+    { id: 4, label: "Punk", onSelected: punkSongs },
+    { id: 5, label: "Metal", onSelected: metalSongs },
+    { id: 6, label: "Classical", onSelected: classicalSongs },
+    { id: 7, label: "Electronic", onSelected: electronicSongs },
+    { id: 8, label: "Reggaeton", onChaonSelectednge: reggaetonSongs },
+    { id: 9, label: "Indie", onSelected: indieSongs },
+    { id: 10, label: "70s", onSelected: seventiesSongs },
+    { id: 11, label: "80s", onSelected: eightiesSongs },
+    { id: 12, label: "90s", onSelected: ninetiesSongs },
+    { id: 13, label: "2000s", onSelected: twothousandsSongs },
+    { id: 14, label: "2010s", onSelected: twentytenSongs },
+    { id: 15, label: "2020s", onSelected: twentytwentySongs }
+  ];
+
   const handleChange = (e) => {
     setChecked(!checked); 
-    return (
-      e.target.id(checked)
-    )
+    let selected = e.target.onSelected(checked)
+    return selected
     //setChecked({ ...checked, [e.target.id]: e.target.checked });
   };
 
-  function handleSubmit(e){
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if(onChange >= 1){
+
+    if(checked >= 1){
       return (
         navigate("/favourites")
       )
-    }else{NoPlaylistAlert()}
-  };
-  
+    }else{NoSelectionAlert()}
+  };  
 
-  const checkboxes = [
-    { id: 1, label: "Rock", onChange: rockSongs },
-    { id: 2, label: "Hip Hop", onChange: hiphopSongs },
-    { id: 3, label: "Pop", onChange: popSongs },
-    { id: 4, label: "Punk", onChange: punkSongs },
-    { id: 5, label: "Metal", onChange: metalSongs },
-    { id: 6, label: "Classical", onChange: classicalSongs },
-    { id: 7, label: "Electronic", onChange: electronicSongs },
-    { id: 8, label: "Reggaeton", onChange: reggaetonSongs },
-    { id: 9, label: "Indie", onChange: indieSongs },
-    { id: 10, label: "70s", onChange: seventiesSongs },
-    { id: 11, label: "80s", onChange: eightiesSongs },
-    { id: 12, label: "90s", onChange: ninetiesSongs },
-    { id: 13, label: "2000s", onChange: twothousandsSongs },
-    { id: 14, label: "2010s", onChange: twentytenSongs },
-    { id: 15, label: "2020s", onChange: twentytwentySongs }
-  ];
+ 
 
   return (
     <div className="container">
@@ -86,7 +87,7 @@ const App = () => {
         </div>
         <div className="submit-button">
           <button className="submit-btn" type="submit">
-            Submit
+            Get my mix!
           </button>
         </div>
       </form>
@@ -95,3 +96,4 @@ const App = () => {
 };
 
 export default App;
+export let selected;

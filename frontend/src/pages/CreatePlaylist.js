@@ -16,9 +16,7 @@ function playlistMaker() {
     fetchSongs()
   }, [songs])
 
-  function setPlaylist() {
-    
-  }
+  //function setPlaylist() {}
 
   return (
     <div className="Home">
@@ -28,4 +26,4 @@ function playlistMaker() {
   );
 }
 
-export default Home;
+export default playlistMaker;
