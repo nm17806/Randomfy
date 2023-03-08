@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Checkbox.css";
 
 const Checkbox = ({ id, label, onChange }) => {
@@ -21,10 +21,12 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
-    // This prevents the refresh of the page and logs results to console
-    // This will need to be chnaged in the future
     e.preventDefault();
-    console.log(checked);
+    console.log(checked[1]);
+
+    if (checked[1] === true) {
+      console.log("1 is true");
+    }
   };
 
   const checkboxes = [
