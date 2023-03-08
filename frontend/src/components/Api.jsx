@@ -1,11 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-// import components
-import Playlist from "../components/Playlist";
-import History from "../components/History";
-import SongDetails from "../components/SongDetails";
-
-// fetch songs
+import React from "react";
 
 function Home() {
   const [songs, setSongs] = useState(null);
