@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import SongDetails from "./SongDetails";
 
 function Home() {
   const [songs, setSongs] = useState(null);
