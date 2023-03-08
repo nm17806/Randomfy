@@ -61,7 +61,7 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     if(checked >= 1){
       return (

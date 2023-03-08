@@ -1,76 +1,68 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-const Song = require("../models/songModel");
-const mongoose = require("mongoose");
+import selected from "../components/Checkbox"
 
-function Playlist({Song}) {
- 
-  this.songName = 
+function Playlist() {
 
-  return this.state.Song.map((song, index) => {
-    const {songName, artist, genre, spotifyLink} = song
-    return (
-      <tr>
-        <td>1</td>
-        <td>{songName}</td>
-        <td>{artist}</td>
-        <td>{genre}</td>
-        <td>
-          <a href={spotifyLink}>
-            <img src="./img/spotify.png" alt="Spotify icon" />
-          </a>
-        </td>
-      </tr>
-    )
-  })
-  //option 1 
-  /* function songNumber(){
-    for(let i=1; {song}; i++){
-      return i;
-    }
-  }; 
-
-  //option 2
-  const [number, addNumber] = React.useState(0);
-  function SongNumber() {
-    addNumber(number + 1);
-  }
+  /*
+  let songName = selected.songName;
+  let artist = selected.artist;
+  let genre = selected.genre;
+  let spotifyLink = selected.spotifyLink;
   */
 
-  return (
-    <div>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Genre</th>
-            <th>Spotify Link</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-              <tr>
-                <td>{i}</td>
-                <td>{songs.songName}</td>
-                <td>{songs.artist}</td>
-                <td>{songs.genre}</td>
-                <td>
-                  <a href={spotifyLink}>
-                    <img src="./img/spotify.png" alt="Spotify icon" />
-                  </a>
-                </td>
-              </tr>
-              };
-          }
-        </tbody>
-      </Table>
+  function songNumber(){
+    for(let i=1; selected.length; i++){
+      return i;
+    }
+  };
 
-      <hr></hr>
-    </div>
-  );
-}
+  if(!selected){
+    return(
+      <div>
+        <p>You don't have any mix selected.</p>
+      </div>
+    )
+
+  }else{
+
+    return (
+      <div>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Genre</th>
+              <th>Spotify Link</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {
+              selected.map((song) => (
+                <tr key={song.id}>
+                  <td>{songNumber}</td>
+                  <td>{song.songName}</td>
+                  <td>{song.artist}</td>
+                  <td>{song.genre}</td>
+                  <td>
+                    <a href={song.spotifyLink}>
+                      <img src="../img/spotify.png" alt="Spotify icon" />
+                    </a>
+                  </td>
+                </tr>
+              ))
+            };
+          </tbody>
+        </Table>
+
+        <hr></hr>
+      </div>
+    );
+  }
+};
 
 export default Playlist;
