@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Checkbox.css";
+import { useNavigate } from "react-router-dom";
 
 const Checkbox = ({ id, label, onChange }) => {
   return (
@@ -12,21 +13,22 @@ const Checkbox = ({ id, label, onChange }) => {
   );
 };
 
+var selection = [];
+
 const App = () => {
   // This checks if the button is clicked on not and holds the data
   const [checked, setChecked] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setChecked({ ...checked, [e.target.id]: e.target.checked });
+    // setChecked(!checked);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(checked[1]);
-
-    if (checked[1] === true) {
-      console.log("1 is true");
-    }
+    selection = checked;
+    navigate("/favourites");
   };
 
   const checkboxes = [
@@ -70,4 +72,4 @@ const App = () => {
   );
 };
 
-export default App;
+export { App, selection };
