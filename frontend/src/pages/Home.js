@@ -1,7 +1,7 @@
 import React from "react";
 
 // import components
-import Checkbox from "../components/Checkbox";
+import { App } from "../components/Checkbox";
 import Header from "../components/Header";
 import Instructions from "../components/Instructions";
 
@@ -10,7 +10,7 @@ function Home() {
     <div className="Home">
       <Header />
       <Instructions />
-      <Checkbox />
+      <App />
     </div>
   );
 }

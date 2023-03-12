@@ -10,10 +10,7 @@ const getAllSongs = async (req, res) => {
 
 // Get 5 Indie Genre songs
 const getIndieRandom = async (req, res) => {
-  const songs = await Song.aggregate([
-    { $match: { genre: "Indie" } },
-    { $sample: { size: 5 } },
-  ]);
+  const songs = await Song.find({ genre: "Indie" });
 
   res.status(200).json(songs);
 };
