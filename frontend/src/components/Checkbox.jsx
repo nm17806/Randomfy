@@ -27,8 +27,17 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    selection = checked;
-    navigate("/favourites");
+
+    const checkedCheckboxes = Object.values(checked).filter(
+      (isChecked) => isChecked
+    );
+
+    if (checkedCheckboxes.length > 1) {
+      selection = checked;
+      navigate("/favourites");
+    } else {
+      alert("Please click on two or more selections to get your mix!");
+    }
   };
 
   const checkboxes = [
