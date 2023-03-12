@@ -21,6 +21,7 @@ const SongDetails = ({ song }) => {
       </a>
       <br></br>
       <br></br>
+      <br></br>
     </div>
   );
 };
