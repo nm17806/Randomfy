@@ -1,36 +1,85 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 // import components
-import Playlist from "../components/Playlist";
-import History from "../components/History";
-import SongDetails from "../components/SongDetails";
+import { selection } from "../components/Checkbox";
+import {
+  RockSongs,
+  HipHopSongs,
+  PopSongs,
+  PunkSongs,
+  MetalSongs,
+  ClassicalSongs,
+  ElectronicSongs,
+  ReggaetonSongs,
+  IndieSongs,
+  SeventiesSongs,
+  EightiesSongs,
+  NinetiesSongs,
+  TwoThousandsSongs,
+  TwentyTenSongs,
+  TwentyTwentySongs,
+} from "../components/Api";
 
 // fetch songs
 
 function Home() {
-  const [songs, setSongs] = useState(null);
+  
+  function FetchedSongs() {
+    return (
+      <div>
+        {selection["1"] && <RockSongs />}
+        {selection["2"] && <HipHopSongs />}
+        {selection["3"] && <PopSongs />}
+        {selection["4"] && <PunkSongs />}
+        {selection["5"] && <MetalSongs />}
+        {selection["6"] && <ClassicalSongs />}
+        {selection["7"] && <ElectronicSongs />}
+        {selection["8"] && <ReggaetonSongs />}
+        {selection["9"] && <IndieSongs />}
+        {selection["10"] && <SeventiesSongs />}
+        {selection["11"] && <EightiesSongs />}
+        {selection["12"] && <NinetiesSongs />}
+        {selection["13"] && <TwoThousandsSongs />}
+        {selection["14"] && <TwentyTenSongs />}
+        {selection["15"] && <TwentyTwentySongs />}
+      </div>
+    );
+  };
 
-  useEffect(() => {
-    const fetchSongs = async () => {
-      const response = await fetch("/api/songs/Indie");
-      const json = await response.json();
+  const [saved, isSaved] = useState();
+  function handleOnClick(){
+    isSaved(!saved)
+  };
 
-      if (response.ok) {
-        setSongs(json);
-      }
-    };
-
-    fetchSongs();
-  }, []);
+  function Favourites(){
+    if(saved){
+      return(
+        <FetchedSongs />
+      )
+    }else{
+      return(
+        <p>You haven't saved any Favourites yet</p>
+      )
+    }
+  }
 
   return (
-    <div className="home">
-      <div className="songs">
-        {songs &&
-          songs.map((song) => <SongDetails key={song._id} song={song} />)}
-      </div>
+    <div>
+
+      <button onClick={handleOnClick}>Save to Favourites</button>
+
+      <FetchedSongs />
+
+      <br></br>
+      <hr></hr>
+      <br></br>
+
+      <h4>Favourites</h4>
+      <br></br>
+      <Favourites />
+
     </div>
   );
-}
+};
 
 export default Home;

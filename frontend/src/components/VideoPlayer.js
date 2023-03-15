@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import '../App.css';
@@ -6,6 +7,7 @@ import '../App.css';
 function VideoPlayer() {
   const [timeOfDay, setTimeOfDay] = useState('');
   const [lastVideoId] = useState(''); // nuevo estado para guardar el último ID de video reproducido
+
   const [isPlaying, setIsPlaying] = useState(true);
 
 
@@ -13,13 +15,14 @@ function VideoPlayer() {
     const date = new Date();
     const hour = date.getHours();
     if (hour < 12) {
-      setTimeOfDay('morning');
+      setTimeOfDay("morning");
     } else if (hour >= 12 && hour < 18) {
-      setTimeOfDay('afternoon');
+      setTimeOfDay("afternoon");
     } else {
-      setTimeOfDay('night');
+      setTimeOfDay("night");
     }
   }, []);
+
 
   //////////////// ID de los videos youtube////////////////
   const videosMorning = [
@@ -46,6 +49,7 @@ function VideoPlayer() {
     'NgN12_xNHb0'
   ];
 
+
   //////////////Codigo para que sean random los videos////////////
   const getRandomVideo = (videos) => {
     let randomVideo = null;
@@ -56,6 +60,7 @@ function VideoPlayer() {
   };
 
   const getVideoSource = () => {
+
     let videos = [];
     if (timeOfDay === 'morning') {
       videos = videosMorning;
@@ -76,14 +81,15 @@ function VideoPlayer() {
   };
 ////parameter video///
   const opts = {
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     playerVars: {
       autoplay: 1,
+
       mute: 0,  //cambiar de 1 a 0 para quitar el mute
       loop: 1,
-      controls: 1
-    }
+      controls: 1,
+    },
   };
 
   return (
