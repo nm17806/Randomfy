@@ -32,3 +32,6 @@ app.use((req, res, next) => {
 // songs routes
 const songsRoutes = require("./routes/songs");
 app.use("/api/songs", songsRoutes);
+
+const userRoutes = require("./routes/user");
+app.use("/api/user", userRoutes);
