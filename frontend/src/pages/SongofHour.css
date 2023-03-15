@@ -1,8 +1,36 @@
+body {
+  background-color: #CBE4DE;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #0f4c81;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #0f4c81;
+  margin-bottom: 40px;
+}
+
 .player-wrapper {
-  position: relative;
+  position: relative; 
   width: 100%;
   height: 0;
   padding-bottom: 56.25%; 
+  border: 4px solid #0f4c81; /* quitar en caso que no pueda quitar el marco al refresh */
+  border-radius: 10px; /* Agrega bordes circulares */
 }
 
 .player-wrapper iframe,
@@ -13,4 +41,5 @@
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 10px; /* Agrega bordes circulares */
 }

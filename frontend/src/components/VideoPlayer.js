@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
-import '../pages/SongofHour.css';
+import '../App.css';
 
-///////////// asignar horario para reprodcucion de musica //////////// 
-////////// revisar codigo is playing para reprodcucion auto (1 warning)////
+///////////// asignar horario para reprodcucion de musica/mostrar el rep-video ////////////
 function VideoPlayer() {
   const [timeOfDay, setTimeOfDay] = useState('');
+  const [lastVideoId] = useState(''); // nuevo estado para guardar el último ID de video reproducido
   const [isPlaying, setIsPlaying] = useState(true);
 
-  useEffect(() => {
+
+   useEffect(() => {
     const date = new Date();
     const hour = date.getHours();
     if (hour < 12) {
@@ -19,36 +20,51 @@ function VideoPlayer() {
       setTimeOfDay('night');
     }
   }, []);
-//////////////// ID de los videos youtube////////////////
+
+  //////////////// ID de los videos youtube////////////////
   const videosMorning = [
-    'SuCyZlksrI',
-    'hlWiI4xVXKY',
-    'iqmO1RlqorU'
+    'EmRwe-oY3VQ',//ok
+    'ushOXEf7Fzc',//ok
+    'TMb0Q7O6nN4',//ok
+    'JsuqnzqZimQ',//ok
+    'APFMvzH1WEE'//ok
   ];
-  ///////// pendiente modificae ID youtube elegir videos para la tarde y la noche
+
   const videosAfternoon = [
-    'SuCyZlksrI',
-    'hlWiI4xVXKY',
-    'iqmO1RlqorU'
+    'IRyJe-0Uie0',
+    'IUl7su3j1Eo',
+    '2ig28K45I90',
+    'CpNBODqTA34',
+    '5mFTXbZzOAE'
   ];
+
   const videosNight = [
-    'SSuCyZlksrI',
-    'hlWiI4xVXKY',
-    'iqmO1RlqorU'
+    'Zkgzg5wK-4A',
+    'n9Y2Eb4BaSg',
+    'apcTjWv4d08',
+    '33Xe3z8L73A',
+    'NgN12_xNHb0'
   ];
-//////////////Codigo para que sean random los videos////////////
+
+  //////////////Codigo para que sean random los videos////////////
   const getRandomVideo = (videos) => {
-    return videos[Math.floor(Math.random() * videos.length)];
+    let randomVideo = null;
+    do {
+      randomVideo = videos[Math.floor(Math.random() * videos.length)];
+    } while (randomVideo === lastVideoId); // asegurarse de que el video seleccionado al azar no sea el mismo que el último reproducido
+    return randomVideo;
   };
 
   const getVideoSource = () => {
+    let videos = [];
     if (timeOfDay === 'morning') {
-      return getRandomVideo(videosMorning);
+      videos = videosMorning;
     } else if (timeOfDay === 'afternoon') {
-      return getRandomVideo(videosAfternoon);
+      videos = videosAfternoon;
     } else {
-      return getRandomVideo(videosNight);
+      videos = videosNight;
     }
+    return getRandomVideo(videos);
   };
 
   const handlePlay = () => {
@@ -58,13 +74,13 @@ function VideoPlayer() {
   const handlePause = () => {
     setIsPlaying(false);
   };
-
+////parameter video///
   const opts = {
     height: '100%',
     width: '100%',
     playerVars: {
       autoplay: 1,
-      mute: 0,// cambiar de 1 a 0 para quitar el mute
+      mute: 0,  //cambiar de 1 a 0 para quitar el mute
       loop: 1,
       controls: 1
     }
