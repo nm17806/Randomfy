@@ -1,12 +1,12 @@
 import React from 'react';
-import VideoPlayer from '../components/VideoPlayer';
-import './SongofHour.css';
+import VideoPlayer from './components/VideoPlayer';
+import './App.css';
 
 const App = () => {
   return (
-    <div>
-      <h1>Video content that's always in sync with your day</h1>
-      <h2>Join the Revolution with Ramdomfy </h2>
+    <div className="app-container">
+      <h1 className="title">Video content that's always in sync with your day.</h1>
+      <h2 className="subtitle">Join the Revolution with Randomfy </h2>
       <VideoPlayer autoPlay={true}/>
     </div>
   );
