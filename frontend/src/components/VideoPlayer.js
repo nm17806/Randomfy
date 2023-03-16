@@ -1,17 +1,15 @@
-
-import React, { useState, useEffect } from 'react';
-import YouTube from 'react-youtube';
-import '../App.css';
+import React, { useState, useEffect } from "react";
+import YouTube from "react-youtube";
+import "../pages/SongofHour.css";
 
 ///////////// asignar horario para reprodcucion de musica/mostrar el rep-video ////////////
 function VideoPlayer() {
-  const [timeOfDay, setTimeOfDay] = useState('');
-  const [lastVideoId] = useState(''); // nuevo estado para guardar el último ID de video reproducido
+  const [timeOfDay, setTimeOfDay] = useState("");
+  const [lastVideoId] = useState(""); // nuevo estado para guardar el último ID de video reproducido
 
   const [isPlaying, setIsPlaying] = useState(true);
 
-
-   useEffect(() => {
+  useEffect(() => {
     const date = new Date();
     const hour = date.getHours();
     if (hour < 12) {
@@ -23,32 +21,30 @@ function VideoPlayer() {
     }
   }, []);
 
-
   //////////////// ID de los videos youtube////////////////
   const videosMorning = [
-    'EmRwe-oY3VQ',//ok
-    'ushOXEf7Fzc',//ok
-    'TMb0Q7O6nN4',//ok
-    'JsuqnzqZimQ',//ok
-    'APFMvzH1WEE'//ok
+    "EmRwe-oY3VQ", //ok
+    "ushOXEf7Fzc", //ok
+    "TMb0Q7O6nN4", //ok
+    "JsuqnzqZimQ", //ok
+    "APFMvzH1WEE", //ok
   ];
 
   const videosAfternoon = [
-    'IRyJe-0Uie0',
-    'IUl7su3j1Eo',
-    '2ig28K45I90',
-    'CpNBODqTA34',
-    '5mFTXbZzOAE'
+    "IRyJe-0Uie0",
+    "IUl7su3j1Eo",
+    "2ig28K45I90",
+    "CpNBODqTA34",
+    "5mFTXbZzOAE",
   ];
 
   const videosNight = [
-    'Zkgzg5wK-4A',
-    'n9Y2Eb4BaSg',
-    'apcTjWv4d08',
-    '33Xe3z8L73A',
-    'NgN12_xNHb0'
+    "Zkgzg5wK-4A",
+    "n9Y2Eb4BaSg",
+    "apcTjWv4d08",
+    "33Xe3z8L73A",
+    "NgN12_xNHb0",
   ];
-
 
   //////////////Codigo para que sean random los videos////////////
   const getRandomVideo = (videos) => {
@@ -60,11 +56,10 @@ function VideoPlayer() {
   };
 
   const getVideoSource = () => {
-
     let videos = [];
-    if (timeOfDay === 'morning') {
+    if (timeOfDay === "morning") {
       videos = videosMorning;
-    } else if (timeOfDay === 'afternoon') {
+    } else if (timeOfDay === "afternoon") {
       videos = videosAfternoon;
     } else {
       videos = videosNight;
@@ -79,14 +74,14 @@ function VideoPlayer() {
   const handlePause = () => {
     setIsPlaying(false);
   };
-////parameter video///
+  ////parameter video///
   const opts = {
     height: "100%",
     width: "100%",
     playerVars: {
       autoplay: 1,
 
-      mute: 0,  //cambiar de 1 a 0 para quitar el mute
+      mute: 0, //cambiar de 1 a 0 para quitar el mute
       loop: 1,
       controls: 1,
     },
